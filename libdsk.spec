@@ -26,10 +26,12 @@ LibDsk jest bibliotek±, która w sposób przezroczysty daje dostêp do
 elastycznych.
 
 %package devel
-Summary:	libdsk library - development
-Summary(pl):	Czê¶æ dla programistów u¿ywaj±cych biblioteki libdsk
+Summary:	libdsk library - development files
+Summary(pl):	Pliki programistyczne biblioteki libdsk
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
+Requires:	bzip2-devel
+Requires:	zlib-devel
 
 %description devel
 The libdsk-devel package contains the header files and documentation
@@ -43,7 +45,7 @@ do kompilowania aplikacji korzystaj±cych z libdsk.
 Summary:	libdsk static library
 Summary(pl):	Statyczna biblioteka libdsk
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 This package contains the static libdsk library.
