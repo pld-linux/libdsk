@@ -2,7 +2,7 @@ Summary:	libdsk library
 Summary(pl):	Biblioteka libdsk
 Name:		libdsk
 Version:	1.1.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.seasip.demon.co.uk/Unix/LibDsk/%{name}-%{version}.tar.gz
