@@ -1,12 +1,12 @@
 Summary:	libdsk library
 Summary(pl):	Biblioteka libdsk
 Name:		libdsk
-Version:	1.1.1
-Release:	4
+Version:	1.1.3
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.seasip.demon.co.uk/Unix/LibDsk/%{name}-%{version}.tar.gz
-# Source0-md5:	8017d011b2f49b1276af848e0919f0c1
+# Source0-md5:	8e5f039b04e9d7122e7e849934305798
 URL:		http://www.seasip.demon.co.uk/Unix/LibDsk/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -14,6 +14,9 @@ BuildRequires:	bzip2-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# global config file is %{_datadir}/LibDsk/libdskrc
+%define		_datadir	%{_sysconfdir}
 
 %description
 LibDsk is a library intended to give transparent access to floppy
@@ -56,6 +59,8 @@ Statyczna wersja biblioteki libdsk.
 %prep
 %setup -q
 
+%{__perl} -pi -e 's,/usr/local/share,%{_datadir},' man/libdskrc.5
+
 %build
 %{__libtoolize}
 %{__aclocal}
@@ -83,6 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/libdsk.so.*.*.*
 %{_mandir}/man1/*
+%{_mandir}/man5/libdskrc.5*
 
 %files devel
 %defattr(644,root,root,755)
