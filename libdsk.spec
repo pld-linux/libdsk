@@ -1,12 +1,12 @@
 Summary:	libdsk library
 Summary(pl):	Biblioteka libdsk
 Name:		libdsk
-Version:	1.0.0
+Version:	1.1.0
 Release:	1
 License:	LGPL
-Group:		Development/Libraries
+Group:		Libraries
 Source0:	http://www.seasip.demon.co.uk/Unix/LibDsk/%{name}-%{version}.tar.gz
-# Source0-md5:	47b0e490334db13cc715d561a722c14e
+# Source0-md5:	03a3e58071703e31f8b867ae2e6042df
 URL:		http://www.seasip.demon.co.uk/Unix/LibDsk/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -41,12 +41,12 @@ do kompilowania aplikacji korzystaj±cych z libdsk.
 
 %package static
 Summary:	libdsk static library
-Summary(pl):	Statyczna biblioteka libspectrum
+Summary(pl):	Statyczna biblioteka libdsk
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
-The libdsk-static package contains the static libraries of libdsk.
+This package contains the static libdsk library.
 
 %description static -l pl
 Statyczna wersja biblioteki libdsk.
@@ -55,10 +55,10 @@ Statyczna wersja biblioteki libdsk.
 %setup -q
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 %{__make}
@@ -66,7 +66,8 @@ rm -f missing
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,16 +77,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libdsk.so.*
+%doc ChangeLog TODO
 %attr(755,root,root) %{_bindir}/*
-%{_mandir}/*/*
+%attr(755,root,root) %{_libdir}/libdsk.so.*.*.*
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/{libdsk.txt,TODO}
+%doc doc/{libdsk.txt,cfi.html,TODO}
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/libdsk.la
-%{_includedir}/*
+%{_includedir}/*.h
 
 %files static
 %defattr(644,root,root,755)
