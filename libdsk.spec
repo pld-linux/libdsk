@@ -1,4 +1,6 @@
+# Conditional build:
 %bcond_without	static_libs	# don't build static library
+#
 Summary:	libdsk library
 Summary(pl):	Biblioteka libdsk
 Name:		libdsk
