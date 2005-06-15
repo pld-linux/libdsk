@@ -1,3 +1,4 @@
+%bcond_without	static_libs	# don't build static library
 Summary:	libdsk library
 Summary(pl):	Biblioteka libdsk
 Name:		libdsk
@@ -67,7 +68,8 @@ Statyczna wersja biblioteki libdsk.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %install
@@ -97,6 +99,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libdsk.la
 %{_includedir}/*.h
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
