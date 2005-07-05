@@ -1,15 +1,16 @@
+#
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	libdsk library
 Summary(pl):	Biblioteka libdsk
 Name:		libdsk
-Version:	1.1.4
+Version:	1.1.5
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.seasip.demon.co.uk/Unix/LibDsk/%{name}-%{version}.tar.gz
-# Source0-md5:	41cecf4269acde87f1ffeecb6a0965f9
+# Source0-md5:	d6195657598e02625478b8ec6222a901
 URL:		http://www.seasip.demon.co.uk/Unix/LibDsk/
 BuildRequires:	autoconf
 BuildRequires:	automake
