@@ -5,12 +5,12 @@
 Summary:	libdsk library
 Summary(pl):	Biblioteka libdsk
 Name:		libdsk
-Version:	1.1.7
+Version:	1.1.8
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.seasip.demon.co.uk/Unix/LibDsk/%{name}-%{version}.tar.gz
-# Source0-md5:	82962da1dd3edf630547a5e85a336dcc
+# Source0-md5:	b457eed21f0b5861179127b5fa8a4bb9
 URL:		http://www.seasip.demon.co.uk/Unix/LibDsk/
 BuildRequires:	autoconf
 BuildRequires:	automake
