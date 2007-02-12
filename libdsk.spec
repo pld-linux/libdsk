@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	libdsk library
-Summary(pl):	Biblioteka libdsk
+Summary(pl.UTF-8):   Biblioteka libdsk
 Name:		libdsk
 Version:	1.1.12
 Release:	1
@@ -27,14 +27,14 @@ LibDsk is a library intended to give transparent access to floppy
 drives and to the "disc image files" used by emulators to represent
 floppy drives.
 
-%description -l pl
-LibDsk jest bibliotek±, która w sposób przezroczysty daje dostêp do
-"obrazów dysków" u¿ywanych przez emulatory do reprezentowania dysków
+%description -l pl.UTF-8
+LibDsk jest bibliotekÄ…, ktÃ³ra w sposÃ³b przezroczysty daje dostÄ™p do
+"obrazÃ³w dyskÃ³w" uÅ¼ywanych przez emulatory do reprezentowania dyskÃ³w
 elastycznych.
 
 %package devel
 Summary:	libdsk library - development files
-Summary(pl):	Pliki programistyczne biblioteki libdsk
+Summary(pl.UTF-8):   Pliki programistyczne biblioteki libdsk
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	bzip2-devel
@@ -44,20 +44,20 @@ Requires:	zlib-devel
 The libdsk-devel package contains the header files and documentation
 needed to develop applications with libdsk.
 
-%description devel -l pl
-Pakiet libdsk-devel zawiera pliki nag³ówkowe i dokumentacjê potrzebne
-do kompilowania aplikacji korzystaj±cych z libdsk.
+%description devel -l pl.UTF-8
+Pakiet libdsk-devel zawiera pliki nagÅ‚Ã³wkowe i dokumentacjÄ™ potrzebne
+do kompilowania aplikacji korzystajÄ…cych z libdsk.
 
 %package static
 Summary:	libdsk static library
-Summary(pl):	Statyczna biblioteka libdsk
+Summary(pl.UTF-8):   Statyczna biblioteka libdsk
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 This package contains the static libdsk library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja biblioteki libdsk.
 
 %prep
