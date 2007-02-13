@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	libdsk library
-Summary(pl.UTF-8):   Biblioteka libdsk
+Summary(pl.UTF-8):	Biblioteka libdsk
 Name:		libdsk
 Version:	1.1.12
 Release:	1
@@ -34,7 +34,7 @@ elastycznych.
 
 %package devel
 Summary:	libdsk library - development files
-Summary(pl.UTF-8):   Pliki programistyczne biblioteki libdsk
+Summary(pl.UTF-8):	Pliki programistyczne biblioteki libdsk
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	bzip2-devel
@@ -50,7 +50,7 @@ do kompilowania aplikacji korzystających z libdsk.
 
 %package static
 Summary:	libdsk static library
-Summary(pl.UTF-8):   Statyczna biblioteka libdsk
+Summary(pl.UTF-8):	Statyczna biblioteka libdsk
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
