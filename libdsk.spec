@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Biblioteka libdsk
 Name:		libdsk
 Version:	1.1.14
 Release:	1
-License:	LGPL
+License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.seasip.demon.co.uk/Unix/LibDsk/%{name}-%{version}.tar.gz
 # Source0-md5:	640fc55167f4a244f02a14fa64b15dae
