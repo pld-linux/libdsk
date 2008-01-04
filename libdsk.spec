@@ -90,20 +90,25 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog TODO
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/apriboot
+%attr(755,root,root) %{_bindir}/dsk*
+%attr(755,root,root) %{_bindir}/md3serial
 %attr(755,root,root) %{_libdir}/libdsk.so.*.*.*
-%{_mandir}/man1/*
+%attr(755,root,root) %ghost %{_libdir}/libdsk.so.3
+%{_mandir}/man1/apriboot.1*
+%{_mandir}/man1/dsk*.1*
+%{_mandir}/man1/md3serial.1*
 %{_mandir}/man5/libdskrc.5*
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{libdsk.txt,cfi.html,TODO}
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/libdsk.so
 %{_libdir}/libdsk.la
-%{_includedir}/*.h
+%{_includedir}/libdsk.h
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libdsk.a
 %endif
