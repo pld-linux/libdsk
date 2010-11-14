@@ -11,7 +11,7 @@ License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.seasip.info/Unix/LibDsk/%{name}-%{version}.tar.gz
 # Source0-md5:	2cce41b4b1325d697183e34afcae2a9c
-URL:		http://www.seasip.demon.co.uk/Unix/LibDsk/
+URL:		http://www.seasip.info/Unix/LibDsk/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
