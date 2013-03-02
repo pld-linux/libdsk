@@ -1,0 +1,11 @@
+--- libdsk-1.3.3/configure.in.orig	2010-06-28 21:43:20.000000000 +0200
++++ libdsk-1.3.3/configure.in	2013-03-02 20:02:12.392049020 +0100
+@@ -6,7 +6,7 @@
+ VERSION=1.3.3
+ UPDATED='June 28, 2010'
+ AM_INIT_AUTOMAKE(libdsk, $VERSION)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ dnl Support for the Java Native Interface bindings
+ AC_ARG_WITH(jni,

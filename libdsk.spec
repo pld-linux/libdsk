@@ -11,6 +11,7 @@ License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.seasip.info/Unix/LibDsk/%{name}-%{version}.tar.gz
 # Source0-md5:	2cce41b4b1325d697183e34afcae2a9c
+Patch0:		%{name}-am.patch
 URL:		http://www.seasip.info/Unix/LibDsk/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -62,6 +63,7 @@ Statyczna wersja biblioteki libdsk.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %{__perl} -pi -e 's,/usr/local/share,%{_datadir},' man/libdskrc.5
 
