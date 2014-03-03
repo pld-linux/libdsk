@@ -1,27 +1,27 @@
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static library
+%bcond_without	static_libs	# static library
+%bcond_without	java		# Java binding
 #
 Summary:	libdsk library
 Summary(pl.UTF-8):	Biblioteka libdsk
 Name:		libdsk
-Version:	1.3.3
+Version:	1.3.5
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.seasip.info/Unix/LibDsk/%{name}-%{version}.tar.gz
-# Source0-md5:	2cce41b4b1325d697183e34afcae2a9c
+# Source0-md5:	f1341493f83e4702d24a19b0819a3ee8
 Patch0:		%{name}-am.patch
+Patch1:		%{name}-java.patch
 URL:		http://www.seasip.info/Unix/LibDsk/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
-BuildRequires:	libtool
+%{?with_java:BuildRequires:	jdk}
+BuildRequires:	libtool >= 2:2
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-# global config file is %{_datadir}/LibDsk/libdskrc
-%define		_datadir	%{_sysconfdir}
 
 %description
 LibDsk is a library intended to give transparent access to floppy
@@ -61,9 +61,23 @@ This package contains the static libdsk library.
 %description static -l pl.UTF-8
 Statyczna wersja biblioteki libdsk.
 
+%package -n java-libdsk
+Summary:	Java interface to libdsk library
+Summary(pl.UTF-8):	Interfejs Javy do biblioteki libdsk
+Group:		Libraries/Java
+Requires:	%{name} = %{version}-%{release}
+Requires:	jre
+
+%description -n java-libdsk
+Java interface to libdsk library.
+
+%description -n java-libdsk -l pl.UTF-8
+Interfejs Javy do biblioteki libdsk.
+
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %{__perl} -pi -e 's,/usr/local/share,%{_datadir},' man/libdskrc.5
 
@@ -73,8 +87,16 @@ Statyczna wersja biblioteki libdsk.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+# - ac_cv_prog_uudecode_base64=no is a workaround to enforce
+#   Test.class recompilation (included version doesn't work with JDK 1.6);
+# - check needs . in CLASSPATH
+# - we redefine --datadir because global config file is %{_datadir}/LibDsk/libdskrc
+export CLASSPATH=.
 %configure \
-	%{!?with_static_libs:--disable-static}
+	ac_cv_prog_uudecode_base64=no \
+	--datadir=%{_sysconfdir} \
+	%{!?with_static_libs:--disable-static} \
+	%{?with_java:--with-jni}
 %{__make}
 
 %install
@@ -82,6 +104,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install -D doc/libdskrc.sample $RPM_BUILD_ROOT%{_sysconfdir}/LibDsk/libdskrc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -97,6 +121,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/md3serial
 %attr(755,root,root) %{_libdir}/libdsk.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libdsk.so.3
+%dir %{_sysconfdir}/LibDsk
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/LibDsk/libdskrc
 %{_mandir}/man1/apriboot.1*
 %{_mandir}/man1/dsk*.1*
 %{_mandir}/man1/md3serial.1*
@@ -113,4 +139,10 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libdsk.a
+%endif
+
+%if %{with java}
+%files -n java-libdsk
+%defattr(644,root,root,755)
+%{_javadir}/libdsk.jar
 %endif
