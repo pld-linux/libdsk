@@ -6,12 +6,12 @@
 Summary:	libdsk library
 Summary(pl.UTF-8):	Biblioteka libdsk
 Name:		libdsk
-Version:	1.3.5
+Version:	1.3.8
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.seasip.info/Unix/LibDsk/%{name}-%{version}.tar.gz
-# Source0-md5:	f1341493f83e4702d24a19b0819a3ee8
+# Source0-md5:	b702926c139fb3453b683f77821884bc
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-java.patch
 URL:		http://www.seasip.info/Unix/LibDsk/
