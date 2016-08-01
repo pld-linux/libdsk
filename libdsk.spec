@@ -8,7 +8,7 @@ Summary(pl.UTF-8):	Biblioteka libdsk
 Name:		libdsk
 # note: 1.4.x is stable, 1.5.x development version
 Version:	1.4.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.seasip.info/Unix/LibDsk/%{name}-%{version}.tar.gz
@@ -16,7 +16,7 @@ Source0:	http://www.seasip.info/Unix/LibDsk/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-java.patch
 URL:		http://www.seasip.info/Unix/LibDsk/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 %{?with_java:BuildRequires:	jdk}
