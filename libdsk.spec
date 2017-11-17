@@ -7,12 +7,12 @@ Summary:	libdsk library
 Summary(pl.UTF-8):	Biblioteka libdsk
 Name:		libdsk
 # note: 1.4.x is stable, 1.5.x development version
-Version:	1.4.0
-Release:	2
+Version:	1.4.2
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.seasip.info/Unix/LibDsk/%{name}-%{version}.tar.gz
-# Source0-md5:	56c28bc4d847b1485fc9da35f034047a
+# Source0-md5:	9e1128a423069528c90a647f69284792
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-java.patch
 URL:		http://www.seasip.info/Unix/LibDsk/
@@ -21,6 +21,7 @@ BuildRequires:	automake
 BuildRequires:	bzip2-devel
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool >= 2:2
+BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -80,7 +81,10 @@ Interfejs Javy do biblioteki libdsk.
 %patch0 -p1
 %patch1 -p1
 
-%{__perl} -pi -e 's,/usr/local/share,%{_datadir},' man/libdskrc.5
+%{__sed} -i -e 's,/usr/local/share,%{_datadir},' man/libdskrc.5
+
+# avoid lyx BR
+touch -r doc/libdsk.lyx doc/libdsk.txt
 
 %build
 %{__libtoolize}
