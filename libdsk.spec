@@ -8,14 +8,15 @@ Summary(pl.UTF-8):	Biblioteka libdsk
 Name:		libdsk
 # note: 1.4.x is stable, 1.5.x development version
 Version:	1.4.2
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://www.seasip.info/Unix/LibDsk/%{name}-%{version}.tar.gz
+Source0:	https://www.seasip.info/Unix/LibDsk/%{name}-%{version}.tar.gz
 # Source0-md5:	9e1128a423069528c90a647f69284792
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-java.patch
-URL:		http://www.seasip.info/Unix/LibDsk/
+Patch2:		sysmacros-major-fix.patch
+URL:		https://www.seasip.info/Unix/LibDsk/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
@@ -80,6 +81,9 @@ Interfejs Javy do biblioteki libdsk.
 %setup -q
 %patch -P0 -p1
 %patch -P1 -p1
+# upstream ships CRLF in this file; normalize so strict %%patch can apply
+%{__sed} -i -e 's,\r$,,' lib/compress.c
+%patch -P2 -p1
 
 %{__sed} -i -e 's,/usr/local/share,%{_datadir},' man/libdskrc.5
 
